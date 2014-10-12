@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Flot Watermark Plugin - Minimal Example</title>
+
+	<link rel="stylesheet" href="style.css" />
+
+	<script type="text/javascript" src="./jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="./jquery.flot.js"></script>
+	<script type="text/javascript" src="./jquery.flot.watermark.js"></script>
+
+	<link rel="stylesheet" href="./UIKit/css/uikit.min.css" />
+	<script type="text/javascript" src="./UIKit/js/uikit.min.js"></script>
+	<script type="text/javascript">
+
+	$(function() {
+		var data = [[0, 3], [4, 8], [8, 5], [9, 13]];
+		$.plot("#minimalPlaceholder", [data], {
+			watermark: {
+				mode: "text",
+				text: "Copyright © 2014 Benjamin Weiss",
+				position: "c",
+			}
+		});
+
+	});
+
+	</script>
+</head>
+<body>
+
+	<!-- HEADER -->
+	<div id="header">
+		<h1>Flot Watermark Plugin - Minimal Example</h1>
+	</div>
+
+	<!-- CONTENT -->
+	<div id="content">
+		<div id="minimalPlaceholder"></div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		Copyright &copy; 2014 <a href="mailto:benjamin.weiss@tu-ilmenau.de">Benjamin Weiss</a>
+	</div>
+
+</body>
+</html>

@@ -13,7 +13,7 @@
 			// common settings
 			mode: "text",
 			opacity: 0.3,
-			position: 'se',
+			position: 'c',
 			margin: 10,
 			// text mode settings
 			text: "COPYRIGHT",

@@ -22,6 +22,12 @@ body {
 	float: left;
 }
 
+#minimalPlaceholder {
+	width: 800px;
+	height: 450px;
+	display: block;
+}
+
 #options {
 	width: 180px;
 	padding: 10px; 
@@ -44,9 +50,9 @@ input[type="file"] {
 
 #footer {
 	width: 800px;
-	margin: 10px auto;
 	text-align: right;
-	clear: both;
+	margin: 0px auto;
+	padding-bottom: 20px;
 }
 
 input[type='text'],
