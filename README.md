@@ -1,6 +1,6 @@
 # jquery.flot.watermark
 
-Flot plugin to add a watermark to the plot. The watermark can either be a text or an image. A minimal example can be found in `minimal-example.html` and an interactive demonstration of the capabilities in `demo.html`.
+Flot plugin to add a watermark to the plot. The watermark can either be a text or an image. A minimal example can be found in `minimal-example.html`. For an interactive demonstration click [here](https://rawgit.com/benjamin-weiss/jquery.flot.watermark/master/demo.html).
 
 ## Usage
 To add a watermark to your flot plot simply include the plugin file `jquery.flot.watermark.js into your page:
