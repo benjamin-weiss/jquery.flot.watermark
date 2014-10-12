@@ -27,7 +27,7 @@ watermark: {
 ```
 
 ### Common options
-Wheather a text or an image should be used can be selected by setting the option "mode" to `text` or `image`. The "opacity" can be set by using the "opacity" option. The "position" option determines where your watermark will be drawn inside the plot area. The following sketch illustrates the meaning of the abbreviations. An additional "margin" can be used if needed.
+Whether a text or an image should be used can be selected by setting the option "mode" to `text` or `image`. The "opacity" can be set by using the "opacity" option. The "position" option determines where your watermark will be drawn inside the plot area. The following sketch illustrates the meaning of the abbreviations. An additional "margin" can be used if needed.
 
 	nw --------- n --------- ne
 	|            |            |
