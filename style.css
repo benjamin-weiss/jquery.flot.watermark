@@ -1,0 +1,62 @@
+body {
+	background-color: #f6f6f6;
+}
+
+#header {
+	width: 800px;
+	margin: 0px auto;
+	padding-top: 20px;
+}
+
+#content {
+	padding: 10px;
+	margin: 20px auto;
+	width: 800px;
+	background-color: #fff;
+}
+
+.placeholder {
+	width: 600px;
+	height: 450px;
+	display: block;
+	float: left;
+}
+
+#options {
+	width: 180px;
+	padding: 10px; 
+	display: block;
+	float: right;
+}
+
+#file-drop {
+	width: 160px;
+	padding: 10px;
+	border:  1px dashed #ddd;
+	background-color: #fff;
+}
+
+input[type="file"] {
+	visibility: hidden;
+ 	width: 0;
+	height: 0;
+}
+
+#footer {
+	width: 800px;
+	margin: 10px auto;
+	text-align: right;
+	clear: both;
+}
+
+input[type='text'],
+input[type='color'],
+input[type='range'],
+select,
+button {
+	width: 180px;
+}
+
+label {
+	font-weight: bold;
+}

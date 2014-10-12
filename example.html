@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Flot Watermark Plugin Example</title>
+
+	<link rel="stylesheet" href="style.css" />
+
+	<script type="text/javascript" src="./jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="./jquery.flot.js"></script>
+	<script type="text/javascript" src="./jquery.flot.watermark.js"></script>
+
+	<link rel="stylesheet" href="./UIKit/css/uikit.min.css" />
+	<script type="text/javascript" src="./UIKit/js/uikit.min.js"></script>
+	<script type="text/javascript">
+
+	$(function() {
+
+		var d1 = [];
+		for (var i = 0; i < 14; i += 0.5) {
+			d1.push([i, Math.sin(i)]);
+		}
+		var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+		var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+
+		function plotTextmode() {
+			$.plot("#placeholderTextMode", [d1,d2,d3], {
+				watermark: {
+					mode: 'text',
+					text: $('#text').val(),
+					color: $('#textcolor').val(),
+					font: $('#font').val(),
+					margin: [parseInt($('#marginX-txt').val()), parseInt($('#marginY-txt').val())],
+					opacity: parseFloat($('#opacity-txt').val()),
+					position: $('#position-txt option:selected').val()
+				}
+			});
+		}
+
+		function plotImagemode() {
+			$.plot("#placeholderImageMode", [d1,d2,d3], {
+				watermark: {
+					mode: 'image',
+					src: './watermark.png',
+					margin: [parseInt($('#marginX-img').val()), parseInt($('#marginY-img').val())],
+					position: $('#position-img option:selected').val(),
+					opacity: parseFloat($('#opacity-img').val()),
+					scaling: parseFloat($('#scaling').val()),
+				}
+			});
+		}
+
+		// Textmoder
+		$('#text, #textcolor, #font, #marginX-txt, #marginY-txt, #opacity-txt, #position-txt').bind('input', function(){
+			plotTextmode();
+		});
+
+		$('#position-txt').on('change', function(){
+			plotTextmode();
+		});
+
+		$('#opacity-img, #scaling, #marginX-img, #marginY-img, #position-img').bind('input', function(){
+			plotImagemode();
+		});
+
+		$('#position-img').on('change', function(){
+			plotImagemode();
+		});
+		
+		$('[data-uk-tab]').on('uk.switcher.show', function(event, area){
+			plotTextmode();
+			plotImagemode();
+		});
+
+		plotTextmode();
+		plotImagemode();
+	});
+
+	</script>
+</head>
+<body>
+
+	<div id="header">
+		<h1>Flot Watermark Plugin</h1>
+	</div>
+
+	<div id="content">
+		<div class="uk-tab-center">
+			<ul id="tabmenu" class="uk-tab" data-uk-tab="{connect:'#tab-content'}">
+				<li class="uk-active"><a href="">Textmode</a></li>
+				<li><a href="">Imagemode</a></li>
+			</ul>
+		</div>
+		<ul id="tab-content" class="uk-switcher uk-margin">
+			<li>
+				<div id="placeholderTextMode" class="placeholder"></div>
+				<div id="options">
+					<form class="uk-form" data-uk-margin>
+					<fieldset>
+						<legend>Options</legend>
+						<div class="uk-form-row">
+							<label for="text">Text</label>
+							<input id="text" type="text" value="Copyright © 2014 Benjamin Weiss" /> 
+							<label for="textcolor">Textcolor</label>
+							<input id="textcolor" type="color" value="rgba(0, 0, 255)" />
+							<label for="font">Font</label>
+							<input id="font" type="text" value="30px Arial" />
+							<label for="opacity-txt">Opacity</label>
+							<input id="opacity-txt" type="range" name="opacity" value="0.3" min="0" max="1" step="0.01" />
+							<label for="position">Position</label>
+							<select id="position-txt" name="position">
+								<option value="nw">
+									North-West
+								</option>
+								<option value="n">
+									North
+								</option>
+								<option value="ne">
+									North-East
+								</option>
+								<option value="e">
+									East
+								</option>
+								<option value="se">
+									South-East
+								</option>
+								<option value="s">
+									South
+								</option>
+								<option value="sw">
+									South-West
+								</option>
+								<option value="w">
+									West
+								</option>
+								<option value="c" selected="selected">
+									Center
+								</option>
+							</select>
+							<label for="marginX">Margin X</label>
+							<input id="marginX-txt" type="range" name="marginX" value="0" min="0" max="100" step="1" />
+							<label for="marginY">Margin Y</label>
+							<input id="marginY-txt" type="range" name="marginY" value="0" min="0" max="100" step="1" />
+						</div>
+					</form>
+				</div>
+				<div style="clear: both;"></div>
+			</li>
+			<li>
+				<div id="placeholderImageMode" class="placeholder"></div>
+				<div id="options">
+					<form class="uk-form" data-uk-margin>
+					<fieldset>
+						<legend>Options</legend>
+						<div class="uk-form-row">
+							<label for="opacity-img">Opacity</label>
+							<input id="opacity-img" type="range" name="opacity" value="0.3" min="0" max="1" step="0.01" />
+							<label for="scaling">Scaling</label>
+							<input id="scaling" type="range" name="scaling" value="1.0" min="0.1" max="2.0" step="0.01" />
+							<label for="position">Position</label>
+							<select id="position-img" name="position">
+								<option value="nw">
+									North-West
+								</option>
+								<option value="n">
+									North
+								</option>
+								<option value="ne">
+									North-East
+								</option>
+								<option value="e">
+									East
+								</option>
+								<option value="se">
+									South-East
+								</option>
+								<option value="s">
+									South
+								</option>
+								<option value="sw">
+									South-West
+								</option>
+								<option value="w">
+									West
+								</option>
+								<option value="c" selected="selected">
+									Center
+								</option>
+							</select>
+							<label for="marginX">Margin X</label>
+							<input id="marginX-img" type="range" name="marginX" value="0" min="0" max="100" step="1" />
+							<label for="marginY">Margin Y</label>
+							<input id="marginY-img" type="range" name="marginY" value="0" min="0" max="100" step="1" />
+						</div>
+					</form>
+				</div>
+				<div style="clear: both;"></div>
+			</li>
+		</div>
+	</div>
+
+	<div id="footer">
+		Copyright &copy; 2014 Benjamin Weiss
+	</div>
+
+</body>
+</html>
+
