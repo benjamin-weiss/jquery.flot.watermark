@@ -6,19 +6,19 @@ Flot plugin to add a watermark to the plot. The watermark can either be a text o
 To add a watermark to your flot plot simply include the plugin file `jquery.flot.watermark.js into your page:
 
 ```HTML
-	<script type="text/javascript" src="js/jquery.flot.watermark.js"></script>
+<script type="text/javascript" src="jquery.flot.watermark.js"></script>
 ```
 and add `watermark` as an option for your plot.
 
 ```HTML
-	var data = [[0, 3], [4, 8], [8, 5], [9, 13]];
-	$.plot("#minimalPlaceholder", [data], {
-		watermark: {
-			mode: "text",
-			text: "Copyright © 2014 Benjamin Weiss",
-			position: "c",
-		}
-	});
+var data = [[0, 3], [4, 8], [8, 5], [9, 13]];
+$.plot("#myPlaceholder", [data], {
+	watermark: {
+		mode: "text",
+		text: "Copyright © 2014 Benjamin Weiss",
+		position: "c",
+	}
+});
 ```
 
 ## Options
