@@ -12,8 +12,9 @@
 		watermark: {
 			// common settings
 			mode: "text",
-			opacity: 0.3,
+			order: "foreground",
 			position: 'c',
+			opacity: 0.3,
 			margin: 10,
 			// text mode settings
 			text: "COPYRIGHT",
@@ -24,32 +25,46 @@
 			scaling: 1.0,
 		}
 	};
+	
 	var watermarkImage = new Image();
 	var loadedImage = undefined;
 		
 	function init(plot) {
-		plot.hooks.draw.push(function (plot, ctx) {
-			var options = plot.getOptions().watermark;
-			if (options.mode == "text") {
-				// Textmode
-				drawText(plot, ctx, options);
+		var usedHook;
+		plot.hooks.processOptions.push(function(plot, options) {
+			var options = options.watermark;
+			if (options.order == "background") {
+				usedHook = plot.hooks.drawBackground;
 			}
-			else if (options.mode == "image") {
-				// Imagemode
-				if (watermarkImage.src == loadedImage) {
-					drawImage(plot, ctx, options);
-				}
-				else {
-					watermarkImage.onload = function() {
-						loadedImage = watermarkImage.src;
-						drawImage(plot, ctx, options);
-					}
-					watermarkImage.src = options.src;
-				}
+			else if (options.order == "foreground") {
+				usedHook = plot.hooks.draw;
 			}
 			else {
-				return;
+				console.log("No valid order specified. Using foreground.")
+				usedHook = plot.hooks.draw;
 			}
+			usedHook.push(function (plot, ctx) {
+				if (options.mode == "text") {
+					// Textmode
+					drawText(plot, ctx, options);
+				}
+				else if (options.mode == "image") {
+					// Imagemode
+					if (watermarkImage.src == loadedImage) {
+						drawImage(plot, ctx, options);
+					}
+					else {
+						watermarkImage.onload = function() {
+							loadedImage = watermarkImage.src;
+							drawImage(plot, ctx, options);
+						}
+						watermarkImage.src = options.src;
+					}
+				}
+				else {
+					return;
+				}
+			});
 		});
 	}
 
@@ -129,7 +144,7 @@
 				ctx.textBaseline = 'middle'; 
 				break;
 			default:
-				console.log("No valid position.");
+				console.log("No valid position specified.");
 		}					
 
 		// read font options
