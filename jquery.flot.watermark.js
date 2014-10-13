@@ -137,6 +137,7 @@
 		ctx.font = options.font;
 		ctx.fillStyle = options.color;
 		ctx.fillText(options.text, xPos, yPos);
+		ctx.restore();
 	}
 
 	function drawImage(plot, ctx, options) {
@@ -202,6 +203,7 @@
 		}					
 		ctx.globalAlpha = options.opacity;
 		ctx.drawImage(watermarkImage, xPos, yPos, options.scaling * width, options.scaling * height);
+		ctx.restore();
 	}
 	$.plot.plugins.push({
 		init: init,
