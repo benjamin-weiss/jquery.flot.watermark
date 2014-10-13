@@ -27,9 +27,10 @@ $.plot("#myPlaceholder", [data], {
 watermark: {
 	// common settings
 	mode: "text" or "image"
-	opacity: number between 0 and 1.0
+	order: "foreground" or "background"
 	position: "nw" or "n" or "ne" or "e" or "se" or "s" or "sw" or "w" or "c"
 	margin: number of pixels or [x margin, y margin]
+	opacity: number between 0 and 1.0
 	// text mode settings
 	text: string
 	color: color e.g. "rgb(0, 144, 200)"
@@ -41,13 +42,15 @@ watermark: {
 ```
 
 ### Common options
-Whether a text or an image should be used can be selected by setting the option "mode" to `text` or `image`. The "opacity" can be set by using the "opacity" option. The "position" option determines where your watermark will be drawn inside the plot area. The following sketch illustrates the meaning of the abbreviations. An additional "margin" can be used if needed.
+Whether a text or an image should be used can be selected by setting the option "mode" to `text` or `image`. The watermark can either be drawn in the background or the foreground. This can be selected with the option "order". The "position" option determines where your watermark will be drawn inside the plot area. The following sketch illustrates the meaning of the abbreviations.
 
 	nw --------- n --------- ne
 	|            |            |
 	w ---------- c ---------- e
 	|            |            |
 	sw --------- s --------- se
+
+ An additional "margin" to the plots edge can be used if needed. It can be set as a single number or as an array for each direction `[x, y]`. If the "postion" is set to `c` the margin values will be ignored. The "opacity" of the watermark can be set by using the "opacity" option. 
 
 ### Textmode options
 To design the watermark in textmode there are three additional options "text", "color" and "font". These are ignored if the plugin is set to work in ìmagemode. Example values can be found above.
