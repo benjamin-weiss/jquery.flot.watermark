@@ -26,7 +26,6 @@
 		}
 	};
 	
-	var watermarkImage = new Image();
 	var loadedImage = undefined;
 		
 	function init(plot) {
@@ -49,14 +48,15 @@
 					drawText(plot, ctx, options);
 				}
 				else if (options.mode == "image") {
+					var watermarkImage = new Image();
 					// Imagemode
 					if (watermarkImage.src == loadedImage) {
-						drawImage(plot, ctx, options);
+						drawImage(plot, ctx, options, watermarkImage);
 					}
 					else {
 						watermarkImage.onload = function() {
 							loadedImage = watermarkImage.src;
-							drawImage(plot, ctx, options);
+							drawImage(plot, ctx, options, watermarkImage);
 						}
 						watermarkImage.src = options.src;
 					}
@@ -155,7 +155,7 @@
 		ctx.restore();
 	}
 
-	function drawImage(plot, ctx, options) {
+	function drawImage(plot, ctx, options, watermarkImage) {
 		ctx.save();
 		var width = watermarkImage.width;
 		var height = watermarkImage.height;
@@ -222,8 +222,8 @@
 	}
 	$.plot.plugins.push({
 		init: init,
-			options: options,
-			name: "Watermark",
-			version: "1.0"
+		options: options,
+		name: "Watermark",
+		version: "1.0"
 	});
 })(jQuery);
