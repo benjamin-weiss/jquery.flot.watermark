@@ -1,5 +1,5 @@
 //
-// Flot Watermark Plugin, Version 1.0.
+// Flot Watermark Plugin, Version 1.0.1.
 //
 // Copyright (c) 2014 Benjamin Weiss.
 //
@@ -224,6 +224,6 @@
 		init: init,
 		options: options,
 		name: "Watermark",
-		version: "1.0"
+		version: "1.0.1"
 	});
 })(jQuery);
